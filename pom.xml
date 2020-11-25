@@ -1,3 +1,4 @@
+
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -26,6 +27,7 @@
 		<version.commons-test>0.2</version.commons-test>
 		<version.junit>4.13.1</version.junit>
 		<version.mockito-core>3.6.28</version.mockito-core>
+		<version.apache-sshd>2.5.1</version.apache-sshd>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +70,12 @@
 			<version>${version.assertj-core}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+      <groupId>org.apache.sshd</groupId>
+      <artifactId>sshd-scp</artifactId>
+      <version>${version.apache-sshd}</version>
+      <scope>test</scope>
+    </dependency>
 	</dependencies>
 	<build>
 		<finalName>unifi-backup</finalName>

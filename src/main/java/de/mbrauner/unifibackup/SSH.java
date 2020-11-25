@@ -27,7 +27,14 @@ public class SSH {
 
     public void perform() throws IOException, JSchException {
         JSch jsch = new JSch();
-        Session session = jsch.getSession(p.getProperty(UnifiProperties.USER), p.getProperty(UnifiProperties.HOST));
+        String host = p.getProperty(UnifiProperties.HOST);
+        int port = UnifiProperties.PORT_DEFAULT;
+
+        if (p.getProperty(UnifiProperties.PORT, "").matches("\\d+")) {
+            port = Integer.parseInt(p.getProperty(UnifiProperties.PORT));
+        }
+
+        Session session = jsch.getSession(p.getProperty(UnifiProperties.USER), host, port);
         session.setPassword(p.getProperty(UnifiProperties.PW));
         session.setConfig("StrictHostKeyChecking", "no");
         session.connect();
